@@ -1,0 +1,86 @@
+.container {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 0;
+}
+
+ul {
+	padding: 0;
+}
+
+ul.menu {
+	display: table;
+	margin: 40px auto;
+}
+
+ul.menu li {
+	list-style: none;
+	font-size: 20px;
+}
+
+ul.menu > li {
+	display: inline-block;
+	padding: 15px 25px;
+	background: #00babc;
+	border-right: 1px solid #000;
+	color: #fff;
+}
+
+ul.menu > li:last-child {
+	border: none;
+}
+
+ul.menu > li:after {
+	content: "\261E";
+	font-size: 25px;
+	line-height: 15px;
+	top: 5px;
+	display: inline-block;
+	position: relative;
+}
+
+ul.menu > li:focus-within {
+	background: #1cd6d8;
+	cursor: pointer;
+}
+
+ul.menu > li:focus-within:after {
+	content: "\261F";
+}
+
+ul.menu li ul {
+	display: none;
+	position: absolute;
+	width: 132px;
+	margin-left: -25px;
+	margin-top: 15px;
+}
+
+ul.menu li ul li {
+	width: 100%;
+}
+
+ul.menu li ul li a {
+	background: #dedede;
+	border-bottom: 1px solid #000;
+	display: block;
+	padding: 10px 15px;
+	text-decoration: none;
+	color: #000;
+}
+
+ul.menu li ul li:last-child a {
+	border: none;
+}
+
+ul.menu li ul li a:focus-within {
+	background: #bbb;
+}
+
+ul.menu > li:focus-within ul {
+	display: block;
+}

@@ -18,8 +18,7 @@
 		endif;
 	endforeach;
 	sort($arr);
-	foreach ($arr as $element) {
-		echo $element;
-		echo "\n";
-	}
+	foreach ($arr as $element) :
+		echo $element . "\n";
+	endforeach;
 ?>

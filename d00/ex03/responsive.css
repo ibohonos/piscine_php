@@ -1,0 +1,165 @@
+body {
+	background-image: url(https://signin.intra.42.fr/assets/background_login-a4e0666f73c02f025f590b474b394fd86e1cae20e95261a6e4862c2d0faa1b04.jpg);
+	background-repeat: no-repeat;
+	background-size: 400%;
+}
+
+.container {
+	width: 100%;
+	max-width: 1024px;
+	margin: 0 auto;
+}
+
+h1 {
+	text-align: center;
+	color: white;
+}
+
+img {
+	width: 150px;
+	position: relative;
+	display: block;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
+	color: #fff;
+}
+
+td, th {
+	text-align: center;
+	position: relative;
+	border: 1px solid black;
+	height: 100px;
+	padding: 0 5px;
+}
+
+h2 {
+	margin: 0;
+	font-size: 23px;
+	line-height: 50px;
+	color: #000;
+	font-weight: bold;
+	font-size: 23px;
+}
+
+.no_border {
+	border: none;
+}
+
+.num {
+	position: relative;
+	text-align: left;
+	margin: 0;
+	bottom: 0;
+	display: block;
+}
+
+.masa {
+	position: relative;
+	text-align: right;
+	margin: 0;
+	top: 0;
+	right: 0;
+	margin-right: 3px;
+	display: block;
+}
+
+td p {
+	font-size: 15px;
+	color: #000;
+}
+
+.red {
+	background: #E97151;
+}
+
+.orange {
+	background: #F4D070;
+}
+
+.yellow {
+	background: #FEE567;
+}
+
+.dark_green {
+	background: #87B461;
+}
+
+.light_grey {
+	background: #E2E3E7;
+}
+
+.blue {
+	background: #B7C9D3;
+}
+
+.pink {
+	background: #F9B6A6;
+}
+
+.dark_pink {
+	background: #D97A82;
+}
+
+.green {
+	background: #CDD156;
+}
+
+.ocean {
+	background: #A7CCAB;
+}
+
+@media only screen and (max-width: 1140px) {
+	body {
+		background-size: 400%;
+	}
+	td p {
+		font-size: 1.5vw;
+	}
+
+	h2 {
+		font-size: 2vw;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	td p {
+		font-size: 1vw;
+	}
+
+	h2 {
+		font-size: 1.5vw;
+	}
+
+	td, th {
+		height: auto;
+	}
+}
+
+@media only screen and (max-width: 580px) {
+	body {
+		background-size: 6100%;
+	}
+
+	.container {
+		width: 90%;
+	}
+
+	td.no_border {
+		display: none;
+	}
+	td {
+		width: 100%;
+		display: block;
+	}
+
+	td p {
+		font-size: 20px;
+	}
+
+	h2 {
+		font-size: 30px;
+	}
+}
