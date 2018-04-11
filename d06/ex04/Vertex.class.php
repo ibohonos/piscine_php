@@ -52,6 +52,11 @@ class Vertex
 		return (file_get_contents('Vertex.doc.txt'));
 	}
 
+	public function opposite()
+	{
+		return new Vector(array('dest' => new Vertex(array('x' => $this->_x * -1, 'y' => $this->_y * -1, 'z' => $this->_z * -1))));
+	}
+
 	public function getX()
 	{
 		return ($this->_x);
