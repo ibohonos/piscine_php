@@ -7,7 +7,7 @@ class Color
 	public $green;
 	public $blue;
 
-	function __construct($color)
+	function __construct(array $color)
 	{
 		if (isset($color['red']) && isset($color['green']) && isset($color['blue'])) :
 			$this->red = round($color['red'] < 0 ? 0 : ($color['red'] > 255 ? 255 : $color['red']));
@@ -19,14 +19,14 @@ class Color
 			$this->green = $rgb['g'];
 			$this->blue = $rgb['b'];
 		endif;
-		if (self::$verbose === TRUE)
-			printf("Color( red: %3d, green: %3d, blue: %3d ) constructed.\n", $this->red, $this->green, $this->blue);
+		if (self::$verbose)
+			print($this . " constructed.\n");
 	}
 
 	function __destruct()
 	{
-		if (self::$verbose === TRUE)
-			printf("Color( red: %3d, green: %3d, blue: %3d ) destructed.\n", $this->red, $this->green, $this->blue);
+		if (self::$verbose)
+			print($this . " destructed.\n");
 	}
 
 	function __toString()
