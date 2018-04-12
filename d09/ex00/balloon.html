@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Balloon</title>
+	<style type="text/css">
+		#ballon {
+			border-radius: 50%;
+			margin: 200px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="ballon" onclick="click_ballon();" style="width: 200px; height: 200px; background: red;" onmouseout="mousefunc();"></div>
+	<script>
+		var ball = document.getElementById("ballon");
+
+		function click_ballon() {
+			if (ball.style.width == "420px" || ball.style.width == "425px") {
+				ball.style.width = "200px";
+				ball.style.height = "200px";
+			} else {
+				ball.style.width = ball.offsetWidth + 10 + "px";
+				ball.style.height = ball.offsetHeight + 10 + "px";
+			}
+			if (ball.style.background == "red") {
+				ball.style.background = "green";
+			} else if (ball.style.background == "green") {
+				ball.style.background = "blue";
+			} else if (ball.style.background == "blue") {
+				ball.style.background = "red";
+			}
+		console.log(ball);
+		}
+
+		function mousefunc() {
+			if (ball.style.width != "200px") {
+				ball.style.width = ball.offsetWidth - 5 + "px";
+				ball.style.height = ball.offsetHeight - 5 + "px";
+			}
+			if (ball.style.background == "red") {
+				ball.style.background = "blue";
+			} else if (ball.style.background == "green") {
+				ball.style.background = "red";
+			} else if (ball.style.background == "blue") {
+				ball.style.background = "green";
+			}
+		}
+	</script>
+</body>
+</html>
