@@ -50,6 +50,7 @@
 window.onload = function()
 {
 	get_todo();
+	document.getElementById("new").addEventListener("click", add_elem);
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -76,8 +77,7 @@ function getCookie(cname) {
 
 function delete_elem(elem_id)
 {
-	var result = confirm("Delete task?");
-	if (result)
+	if (confirm("Delete task?"))
 	{
 		document.getElementById(elem_id).remove();
 
@@ -119,13 +119,15 @@ function add_elem() {
 function get_todo()
 {
 	var list = document.getElementById("ft_list");
-	var array = JSON.parse(getCookie("todo_list"));
-	for (i = 0; i < array.length; i++) 
-	{
-		var elem = document.createElement("div");
-		elem.innerHTML = array[i];
-		elem.id = "elem" + i;
-		elem.setAttribute('onclick', 'delete_elem(this.id)');
-		list.appendChild(elem);
+	if (getCookie("todo_list") !== "") {
+		var array = JSON.parse(getCookie("todo_list"));
+		for (i = 0; i < array.length; i++) 
+		{
+			var elem = document.createElement("div");
+			elem.innerHTML = array[i];
+			elem.id = "elem" + i;
+			elem.setAttribute('onclick', 'delete_elem(this.id)');
+			list.appendChild(elem);
+		}
 	}
 }
