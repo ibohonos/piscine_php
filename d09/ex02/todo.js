@@ -1,66 +1,16 @@
-// var ft_list;
-// var cook = [];
-
-// window.onload = function () {
-// 	document.getElementById("new").addEventListener("click", newList);
-// 	ft_list = document.getElementById("ft_list");
-// 	var tmp = document.cookie;
-// 	if (tmp) {
-// 		cook = JSON.parse(tmp);
-// 		cook.forEach(function (e) {
-// 			addList(e);
-// 		});
-// 	}
-// };
-
-// window.onunload = function () {
-// 	var todo = ft_list.children;
-// 	var newCookie = [];
-// 	for (var i = 0; i < todo.length; i++)
-// 		newCookie.unshift(todo[i].innerHTML);
-// 	document.cookie = JSON.stringify(newCookie);
-// };
-
-// function newList(){
-// 	var todo = prompt("What should you do?", '');
-// 	if (todo !== '') {
-// 		addList(todo)
-// 	}
-// }
-
-// function addList(todo){
-// 	var div = document.createElement("div");
-// 	div.innerHTML = todo;
-// 	div.addEventListener("click", deleteList);
-// 	ft_list.insertBefore(div, ft_list.firstChild);
-// }
-
-// function deleteList(){
-// 	if (confirm("Do you really want to delete this task?")){
-// 		this.parentElement.removeChild(this);
-// 	}
-// }
-
-
-
-
-
-
-
-window.onload = function()
-{
-	get_todo();
+window.onload = function() {
+	ft_get_todos();
 	document.getElementById("new").addEventListener("click", add_elem);
 }
 
-function setCookie(cname, cvalue, exdays) {
+function ft_setCookie(name, val, days) {
 	var d = new Date();
-	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-	var expires = "expires="+d.toUTCString();
-	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+	var expires = "expires=" + d.toUTCString();
+	document.cookie = name + "=" + val + ";" + expires + ";path=/";
 }
 
-function getCookie(cname) {
+function ft_getCookie(cname) {
 	var name = cname + "=";
 	var ca = document.cookie.split(';');
 	for(i = 0; i < ca.length; i++) {
@@ -75,58 +25,56 @@ function getCookie(cname) {
 	return "";
 }
 
-function delete_elem(elem_id)
+function ft_delete_elem(elem_id)
 {
-	if (confirm("Delete task?"))
+	if (confirm("Do you really want to delete this task?"))
 	{
 		document.getElementById(elem_id).remove();
-
 		var list = document.getElementById("ft_list");
-		var array = [];
+		var arr = [];
 		for (i = 0; i < list.children.length; i++) {
-			array[i] =  list.children[i].innerHTML;
+			arr[i] =  list.children[i].innerHTML;
 		}
-		json_array = JSON.stringify(array);
-		setCookie("todo_list", json_array, 1);
+		json_array = JSON.stringify(arr);
+		ft_setCookie("todo_list", json_array, 1);
 	}
 }
 
 function add_elem() {
 	var elem = document.createElement("div");
 	var list = document.getElementById("ft_list");
-	var result = prompt("What shall we do first?");
-	elem.innerHTML = result;
-	elem.id = "elem" + list.children.length;
-	elem.setAttribute('onclick', 'delete_elem(this.id)');
-	if (list.firstChild)
-	{
-		list.insertBefore(elem, list.children[0]);
-	}
-	else
-	{
-		list.appendChild(elem);
-	}
-	var array = [];
+	var result = prompt("What should you do?");
+	var arr = [];
 
-	for (i = 0; i < list.children.length; i++) {
-		array[i] =  list.children[i].innerHTML;
+	if (result) {
+		elem.innerHTML = result;
+		elem.id = "elem" + list.children.length;
+		elem.setAttribute("class", "element");
+		elem.setAttribute('onclick', 'ft_delete_elem(this.id)');
+		if (list.firstChild) {
+			list.insertBefore(elem, list.children[0]);
+		} else {
+			list.appendChild(elem);
+		}
+		for (i = 0; i < list.children.length; i++) {
+			arr[i] =  list.children[i].innerHTML;
+		}
+		json_array = JSON.stringify(arr);
+		ft_setCookie("todo_list", json_array, 1);
 	}
-	json_array = JSON.stringify(array);
-	setCookie("todo_list", json_array, 1);
-
 }
 
-function get_todo()
+function ft_get_todos()
 {
 	var list = document.getElementById("ft_list");
-	if (getCookie("todo_list") !== "") {
-		var array = JSON.parse(getCookie("todo_list"));
-		for (i = 0; i < array.length; i++) 
-		{
+	if (ft_getCookie("todo_list") !== "") {
+		var arr = JSON.parse(ft_getCookie("todo_list"));
+		for (i = 0; i < arr.length; i++) {
 			var elem = document.createElement("div");
-			elem.innerHTML = array[i];
+			elem.innerHTML = arr[i];
 			elem.id = "elem" + i;
-			elem.setAttribute('onclick', 'delete_elem(this.id)');
+			elem.setAttribute("class", "element");
+			elem.setAttribute('onclick', 'ft_delete_elem(this.id)');
 			list.appendChild(elem);
 		}
 	}

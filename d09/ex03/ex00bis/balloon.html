@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Balloon</title>
+	<style type="text/css">
+		#ballon {
+			border-radius: 50%;
+			margin: 200px auto;
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="ballon" onclick="click_ballon();" onmouseout="mousefunc();"></div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		var ball = $("#ballon");
+
+		function click_ballon() {
+			if (ball.width() == 420 || ball.width() == 425) {
+				ball.width(200);
+				ball.height(200);
+			} else {
+				ball.width(ball.width() + 10);
+				ball.height(ball.height() + 10);
+			}
+			if (ball.css("background-color") == "rgb(255, 0, 0)") {
+				ball.css({"background-color": "green"});
+			} else if (ball.css("background-color") == "rgb(0, 128, 0)") {
+				ball.css({"background-color": "blue"});
+			} else if (ball.css("background-color") == "rgb(0, 0, 255)") {
+				ball.css({"background-color": "red"});
+			}
+		}
+
+		function mousefunc() {
+			if (ball.width() != 200) {
+				ball.width(ball.width() - 5);
+				ball.height(ball.height() - 5);
+			}
+			if (ball.css("background-color") == "rgb(255, 0, 0)") {
+				ball.css({"background-color": "blue"});
+			} else if (ball.css("background-color") == "rgb(0, 128, 0)") {
+				ball.css({"background-color": "red"});
+			} else if (ball.css("background-color") == "rgb(0, 0, 255)") {
+				ball.css({"background-color": "green"});
+			}
+		}
+	</script>
+</body>
+</html>

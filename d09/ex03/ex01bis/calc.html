@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container">
-		<form action="" onsubmit="ft_calc();" id="calc">
+		<form action="" id="calc">
 			<input type="text" name="l">
 			<select name="op">
 				<option value="+">+</option>
@@ -24,17 +24,18 @@
 			<input type="submit" name="sub" value="Try me!">
 		</form>
 	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
 		var filterInt = function(value) {
 			if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value))
 				return Number(value);
 			return NaN;
 		}
-		function ft_calc() {
-			var form = document.forms["calc"];
-			var l = form['l'].value;
-			var op = form['op'].value
-			var r = form['r'].value;
+
+		$( "input[type=submit]" ).click(function() {
+			var l = $('input[name=l]').val();
+			var op = $('select[name=op]').val();
+			var r = $('input[name=r]').val();
 			var res;
 
 			if (l < 0 || r < 0
@@ -72,7 +73,7 @@
 			}
 			console.log(res);
 			alert(res);
-		}
+		});
 		function ft_time() {
 			alert("Please, use me...");
 		}
